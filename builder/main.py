@@ -59,7 +59,9 @@ env.Append(
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
         "-mmcu=$BOARD_MCU",
-        "-mlarge" # use large memory-model automatically.
+        "-mlarge", # use large memory-model automatically.
+        "-mcode-region=either",
+        "-mdata-region=either"        
     ],
 
     CXXFLAGS=[
@@ -75,7 +77,9 @@ env.Append(
         "-Os",
         "-mmcu=$BOARD_MCU",
         "-Wl,-gc-sections,-u,main",
-        "-mlarge" # use large memory-model also at the linker stage
+        "-mlarge", # use large memory-model also at the linker stage
+        "-mcode-region=either",
+        "-mdata-region=either"        
     ],
 
     LIBS=["m"],
