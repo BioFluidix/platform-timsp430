@@ -22,14 +22,14 @@ from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
 env = DefaultEnvironment()
 
 env.Replace(
-    AR="msp430-ar",
-    AS="msp430-as",
-    CC="msp430-gcc",
-    CXX="msp430-g++",
-    GDB="msp430-gdb",
-    OBJCOPY="msp430-objcopy",
-    RANLIB="msp430-ranlib",
-    SIZETOOL="msp430-size",
+    AR="msp430-elf-ar",
+    AS="msp430-elf-as",
+    CC="msp430-elf-gcc",
+    CXX="msp430-elf-g++",
+    GDB="msp430-elf-gdb",
+    OBJCOPY="msp430-elf-objcopy",
+    RANLIB="msp430-elf-ranlib",
+    SIZETOOL="msp430-elf-size",
     LINK="$CC",
 
     ARFLAGS=["rc"],
@@ -58,7 +58,8 @@ env.Append(
         "-Os",
         "-ffunction-sections",  # place each function in its own section
         "-fdata-sections",
-        "-mmcu=$BOARD_MCU"
+        "-mmcu=$BOARD_MCU",
+        "-mlarge" # use large memory-model automatically.
     ],
 
     CXXFLAGS=[
@@ -73,7 +74,8 @@ env.Append(
     LINKFLAGS=[
         "-Os",
         "-mmcu=$BOARD_MCU",
-        "-Wl,-gc-sections,-u,main"
+        "-Wl,-gc-sections,-u,main",
+        "-mlarge" # use large memory-model also at the linker stage
     ],
 
     LIBS=["m"],
