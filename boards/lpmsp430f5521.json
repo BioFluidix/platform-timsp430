@@ -1,0 +1,41 @@
+{
+  "build": {
+    "core": "msp430",
+    "extra_flags": "-DENERGIA_ARCH_MSP430 -DENERGIA_MSP_EXP430F5521IPN",
+    "f_cpu": "25000000L",
+    "hwids": [
+      [
+        "0x2341",
+        "0x0c9f"
+      ]
+    ],
+    "mcu": "msp430f5521",
+    "variant": "MSP430F5521IPN"
+  },
+  "debug": {
+    "tools": {
+      "mspdebug": {
+        "onboard": true,
+        "server": {
+          "arguments": [
+            "$UPLOAD_PROTOCOL",
+            "gdb"
+          ],
+          "executable": "mspdebug",
+          "package": "tool-mspdebug"
+        }
+      }
+    }
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "TI MSP430F5521",
+  "upload": {
+    "maximum_ram_size": 6144,
+    "maximum_size": 32768,
+    "protocol": "dslite"
+  },
+  "url": "https://www.ti.com/product/MSP430F5521",
+  "vendor": "TI"
+}
